@@ -16,6 +16,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <security-browser.version>1.0-SNAPSHOT</security-browser.version>
+        <spring-boot-maven-plugin.version>1.5.8.RELEASE</spring-boot-maven-plugin.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <dependencies>
@@ -23,6 +25,15 @@
             <groupId>com.yjy.security</groupId>
             <artifactId>security-browser</artifactId>
             <version>${security-browser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
@@ -38,6 +49,7 @@
                         </goals>
                     </execution>
                 </executions>
+                <version>${spring-boot-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
