@@ -3,6 +3,7 @@ package com.yjy.security.web.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.yjy.security.dto.User;
 import com.yjy.security.dto.UserQueryCondition;
+import com.yjy.security.exception.UserNotExistException;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.data.domain.Pageable;
@@ -79,12 +80,15 @@ public class UserController {
     @GetMapping(value = "/{id:\\d+}")
     @JsonView(User.UserDetailView.class)
     public User getInfo(@PathVariable String id) {
-        System.out.println(id);
 
-        User user = new User();
-        user.setUsername("tom");
+        throw new UserNotExistException(id);
 
-        return user;
+//        System.out.println(id);
+//
+//        User user = new User();
+//        user.setUsername("tom");
+//
+//        return user;
     }
 
 }
