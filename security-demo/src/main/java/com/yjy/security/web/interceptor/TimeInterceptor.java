@@ -8,6 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 1、拿不到请求参数；
+ * 2、能拿到request和response；
+ */
 @Component
 public class TimeInterceptor implements HandlerInterceptor {
 

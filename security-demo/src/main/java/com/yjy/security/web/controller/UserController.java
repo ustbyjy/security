@@ -81,15 +81,15 @@ public class UserController {
     public User getInfo(@PathVariable String id) {
         System.out.println("进入getInfo服务");
 
-        throw new RuntimeException("Interceptor afterCompletion打印Exception");
+//        throw new RuntimeException("Interceptor afterCompletion打印Exception");
 
 //        throw new UserNotExistException(id);
-//        System.out.println(id);
-//
-//        User user = new User();
-//        user.setUsername("tom");
-//
-//        return user;
+        System.out.println(id);
+
+        User user = new User();
+        user.setUsername("tom");
+
+        return user;
     }
 
 }
