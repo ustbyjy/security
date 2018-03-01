@@ -1,5 +1,7 @@
-package com.yjy.security.web.async;
+package com.yjy.security.web.controller;
 
+import com.yjy.security.web.async.DeferredResultHolder;
+import com.yjy.security.web.async.MockQueue;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
