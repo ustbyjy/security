@@ -3,6 +3,8 @@ package com.yjy.security.web.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.yjy.security.dto.User;
 import com.yjy.security.dto.UserQueryCondition;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.data.domain.Pageable;
@@ -56,12 +58,13 @@ public class UserController {
     }
 
     @DeleteMapping("/{id:\\d+}")
-    public void update(@PathVariable String id) {
+    public void delete(@ApiParam(value = "用户id") @PathVariable String id) {
         System.out.println(id);
     }
 
     @GetMapping()
     @JsonView(User.UserSimpleView.class)
+    @ApiOperation(value = "用户查询服务")
     public List<User> query(UserQueryCondition condition, @PageableDefault(page = 1, size = 10, sort = {"username,asc"}) Pageable pageable) {
         System.out.println(ReflectionToStringBuilder.toString(condition, ToStringStyle.MULTI_LINE_STYLE));
         System.out.println(pageable.getPageNumber());
