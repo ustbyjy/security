@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * SpringBootApplication启动时会默认扫描主类当前包及子包
+ */
 @SpringBootApplication
 @EnableAutoConfiguration
 @RestController
