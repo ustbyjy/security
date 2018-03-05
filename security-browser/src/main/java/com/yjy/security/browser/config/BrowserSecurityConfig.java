@@ -1,5 +1,9 @@
 package com.yjy.security.browser.config;
 
+import com.yjy.security.browser.authentication.MyAuthenticationFailureHandler;
+import com.yjy.security.browser.authentication.MyAuthenticationSuccessHandler;
+import com.yjy.security.core.properties.SecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private SecurityProperties securityProperties;
+    @Autowired
+    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
+    @Autowired
+    private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -20,11 +31,13 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/signIn.html")
+                .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
+                .successHandler(myAuthenticationSuccessHandler)
+                .failureHandler(myAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/signIn.html").permitAll()
+                .antMatchers("/authentication/require", securityProperties.getBrowser().getLoginPage()).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
