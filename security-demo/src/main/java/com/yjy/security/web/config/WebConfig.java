@@ -1,17 +1,11 @@
 package com.yjy.security.web.config;
 
-import com.yjy.security.web.filter.TimeFilter;
 import com.yjy.security.web.interceptor.TimeInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
@@ -21,7 +15,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(timeInterceptor);
+//        registry.addInterceptor(timeInterceptor);
     }
 
     /**
@@ -34,7 +28,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         super.configureAsyncSupport(configurer);
     }
 
-    @Bean
+    /*@Bean
     public FilterRegistrationBean timeFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new TimeFilter());
 
@@ -44,5 +38,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         filterRegistrationBean.setUrlPatterns(urls);
 
         return filterRegistrationBean;
-    }
+    }*/
 }

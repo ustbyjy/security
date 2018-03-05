@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 2、拿不到request和response；
  */
 @Aspect
-@Component
+//@Component
 public class TimeAspect {
 
     @Pointcut("execution(* com.yjy.security.web.controller.UserController.*(..))")
