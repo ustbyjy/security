@@ -1,25 +1,14 @@
 package com.yjy.security.core.validate.code;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 
-public class ImageCode {
-    private BufferedImage image;
+public class ValidateCode {
     private String code;
     private LocalDateTime expireTime;
 
-    public ImageCode(BufferedImage image, String code, int expireIn) {
-        this.image = image;
+    public ValidateCode(String code, int expireIn) {
         this.code = code;
         this.expireTime = LocalDateTime.now().plusSeconds(expireIn);
-    }
-
-    public BufferedImage getImage() {
-        return image;
-    }
-
-    public void setImage(BufferedImage image) {
-        this.image = image;
     }
 
     public String getCode() {
@@ -38,7 +27,7 @@ public class ImageCode {
         this.expireTime = expireTime;
     }
 
-    public boolean isExpried() {
+    public boolean isExpired() {
         return LocalDateTime.now().isAfter(expireTime);
     }
 }

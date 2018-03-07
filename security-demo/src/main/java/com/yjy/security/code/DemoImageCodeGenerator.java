@@ -1,11 +1,10 @@
 package com.yjy.security.code;
 
-import com.yjy.security.core.validate.code.ImageCode;
+import com.yjy.security.core.validate.code.image.ImageCode;
 import com.yjy.security.core.validate.code.ValidateCodeGenerator;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
-//@Component("imageCodeGenerator")
+//@Component("imageValidateCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator {
 
     @Override
