@@ -73,6 +73,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                         SecurityConstants.DEFAULT_FAVICON_ICO_URL,
                         securityProperties.getBrowser().getLoginPage(),
                         securityProperties.getBrowser().getSignUpUrl(),
+                        "/connect",
                         "/user/register")
                 .permitAll()
                 .anyRequest()
