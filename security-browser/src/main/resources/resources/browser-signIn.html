@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -10,25 +10,22 @@
 <form action="/authentication/form" method="post">
     <table>
         <tr>
-            <td>用户名：</td>
+            <td>用户名:</td>
             <td><input type="text" name="username"></td>
         </tr>
         <tr>
-            <td>密码：</td>
-            <td><input type="text" name="password"></td>
+            <td>密码:</td>
+            <td><input type="password" name="password"></td>
         </tr>
         <tr>
-            <td>图形验证码：</td>
+            <td>图形验证码:</td>
             <td>
                 <input type="text" name="imageCode">
-                <!--<img src="/code/image?width=200">-->
-                <img src="/code/image">
+                <img src="/code/image?width=200">
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <input type="checkbox" name="remember-me" value="true" />记住我
-            </td>
+            <td colspan='2'><input name="remember-me" type="checkbox" value="true" />记住我</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -42,14 +39,14 @@
 <form action="/authentication/mobile" method="post">
     <table>
         <tr>
-            <td>手机号：</td>
-            <td><input type="text" name="mobile" value="130123456789"></td>
+            <td>手机号:</td>
+            <td><input type="text" name="mobile" value="13012345678"></td>
         </tr>
         <tr>
-            <td>短信验证码：</td>
+            <td>短信验证码:</td>
             <td>
                 <input type="text" name="smsCode">
-                <a href="/code/sms?mobile=130123456789" target="_blank">发送验证码</a>
+                <a href="/code/sms?mobile=13012345678">发送验证码</a>
             </td>
         </tr>
         <tr>
@@ -59,9 +56,10 @@
         </tr>
     </table>
 </form>
-
+<br>
 <h3>社交登录</h3>
-<a href="/auth/qq">QQ登录</a><br>
-<a href="/auth/weixin">微信登录</a>
+<a href="/login/qq">QQ登录</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/login/weixin">微信登录</a>
 </body>
 </html>

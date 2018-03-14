@@ -34,7 +34,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     @Autowired
     private ValidateCodeSecurityConfig validateCodeSecurityConfig;
     @Autowired
-    private SpringSocialConfigurer springSocialConfigurer;
+    private SpringSocialConfigurer customSpringSocialConfigurer;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -59,7 +59,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .and()
                 .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
-                .apply(springSocialConfigurer)
+                .apply(customSpringSocialConfigurer)
                 .and()
                 .rememberMe()
                 .tokenRepository(persistentTokenRepository())
@@ -71,7 +71,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                         SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
                         SecurityConstants.DEFAULT_UN_AUTHENTICATION_URL,
                         SecurityConstants.DEFAULT_FAVICON_ICO_URL,
-                        securityProperties.getBrowser().getLoginPage())
+                        securityProperties.getBrowser().getLoginPage(),
+                        securityProperties.getBrowser().getSignUpUrl(),
+                        "/user/regist")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
