@@ -1,5 +1,6 @@
 package com.yjy.security.browser.config;
 
+import com.yjy.security.browser.session.CustomExpiredSessionStrategy;
 import com.yjy.security.core.authentication.AbstractChannelSecurityConfig;
 import com.yjy.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.yjy.security.core.properties.SecurityConstants;
@@ -66,6 +67,13 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
                 .userDetailsService(userDetailsService)
                 .and()
+                .sessionManagement()
+                .invalidSessionUrl(SecurityConstants.DEFAULT_SESSION_INVALID_URL)
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true)
+                .expiredSessionStrategy(new CustomExpiredSessionStrategy())
+                .and()
+                .and()
                 .authorizeRequests()
                 .antMatchers(
                         SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
@@ -74,7 +82,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                         securityProperties.getBrowser().getLoginPage(),
                         securityProperties.getBrowser().getSignUpUrl(),
                         "/connect",
-                        "/user/register")
+                        "/user/register",
+                        SecurityConstants.DEFAULT_SESSION_INVALID_URL)
                 .permitAll()
                 .anyRequest()
                 .authenticated()
