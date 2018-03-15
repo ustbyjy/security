@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component("connect/status")
-public class CustomConnectionStatusView extends AbstractView {
+public class CustomConnectStatusView extends AbstractView {
 
     @Autowired
     private ObjectMapper objectMapper;
